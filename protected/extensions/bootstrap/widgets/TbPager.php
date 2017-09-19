@@ -42,10 +42,10 @@ class TbPager extends CLinkPager
 	public function init()
 	{
 		if ($this->nextPageLabel === null)
-			$this->nextPageLabel = '&rarr;';
+			$this->nextPageLabel = 'Далее';
 
 		if ($this->prevPageLabel === null)
-			$this->prevPageLabel = '&larr;';
+			$this->prevPageLabel = 'Назад';
 
 		$classes = array();
 
