@@ -68,7 +68,7 @@ class Prefs extends CApplicationComponent {
 	*/
 	public static function steam_convert($id, $url = false, $xml = false) {
 
-		$RightSteam = "/^(STEAM_[0-9])\:([0-9])\:([0-9]{4,8})$/";
+		$RightSteam = "/^(STEAM_[0-9])\:([0-9])\:([0-9]{4,9})$/";
 		$RightNumber = "/^(7656119)([0-9]{10})$/";
 
 		if (!$id) { return false; }
@@ -133,7 +133,7 @@ class Prefs extends CApplicationComponent {
 			$dif = $dif - ($years * (60 * 60 * 24 * 365));
 
 			if($years) {
-				$s .= "{$years} лет ";
+				$s .= "{$years} год.";
 			}
 			if($years && $short) {
 				return $s;
@@ -327,7 +327,7 @@ class Prefs extends CApplicationComponent {
 		}
 		return "{$current} <span class='text-success'>(вы используете последнюю версию)</span>";
 	}
-    
+
     public static function getRealIp() {
 		if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
 			$ip = $_SERVER['HTTP_CLIENT_IP'];
