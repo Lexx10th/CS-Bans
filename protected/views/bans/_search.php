@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Форма поиска бана
  */
@@ -19,22 +19,24 @@ Yii::app()->clientScript->registerScript('bansearch', '
 	});
 ');
 
-$form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array( 
-    'action'=>Yii::app()->createUrl($this->route), 
-    'method'=>'get', 
+$form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
+	'action'=>Yii::app()->createUrl($this->route),
+	'method'=>'get',
 ));
 ?>
 
-    <?php echo $form->textFieldRow($model,'player_nick',array('maxlength'=>100)); ?>
+	<?php echo $form->textFieldRow($model,'player_nick',array('maxlength'=>100)); ?>
 
 	<?php echo $form->textFieldRow($model,'player_id',array('maxlength'=>20)); ?>
 
-    <?php echo $form->textFieldRow($model,'player_ip',array('maxlength'=>15)); ?>
+	<?php echo $form->textFieldRow($model,'player_ip',array('maxlength'=>15)); ?>
+
+	<?php echo $form->textFieldRow($model,'admin_nick',array('maxlength'=>100)); ?>
 
 	<?php echo $form->textFieldRow($model,'ban_reason',array('maxlength'=>100)); ?>
 
 	<label for="Bans_ban_created" class="required">Дата бана</label>
-	<?php 
+	<?php
 		$this->widget('zii.widgets.jui.CJuiDatePicker', array(
 				'model' => $model,
 				'id' => 'ban_created',
@@ -52,12 +54,12 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 		)
 	?>
 
-    <div class="form-actions"> 
-        <?php $this->widget('bootstrap.widgets.TbButton', array( 
-            'buttonType'=>'submit', 
-            'type'=>'primary', 
-            'label'=>'Искать', 
-        )); ?>
-    </div> 
+	<div class="form-actions">
+		<?php $this->widget('bootstrap.widgets.TbButton', array(
+			'buttonType'=>'submit',
+			'type'=>'primary',
+			'label'=>'Искать',
+		)); ?>
+	</div>
 
 <?php $this->endWidget(); ?>
