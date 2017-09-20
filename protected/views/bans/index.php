@@ -172,13 +172,13 @@ $this->widget('bootstrap.widgets.TbGridView', array(
 		<td id="bandetail-steam">
 		</td>
 	</tr>
-	<tr class="odd">
+	<!-- <tr class="odd">
 		<td>
 			<b>Steam Community</b>
 		</td>
 		<td id="bandetail-steamcommynity">
 		</td>
-	</tr>
+	</tr> -->
 	<tr class="odd">
 		<td>
 			<b>IP адрес</b>

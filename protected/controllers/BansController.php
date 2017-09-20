@@ -131,7 +131,7 @@ class BansController extends Controller
 				),
 			),
 		));
-		
+
 		// История банов
 		$history = new CActiveDataProvider('Bans', array(
 			'criteria' => array(
@@ -331,8 +331,12 @@ class BansController extends Controller
 				Yii::app()->end('alert("Ошибка!")');
 			}
 			$js = "$('#bandetail-nick').html('" .  CHtml::encode($model->player_nick) . "');";
-			$js .= "$('#bandetail-steam').html('" . $model->player_id . "');";
-			$js .= "$('#bandetail-steamcommynity').html('" . Prefs::steam_convert($model->player_id, true) . "');";
+			// $js .= "$('#bandetail-steam').html('" . $model->player_id . "');";
+			// $js .= "$('#bandetail-steamcommynity').html('" . Prefs::steam_convert($model->player_id, true) . "');";
+			$js .= "$('#bandetail-steam').html('" . (Prefs::steam_convert($model->player_id, TRUE)
+			? CHtml::link($model->player_id, 'http://steamcommunity.com/profiles/'
+			. Prefs::steam_convert($model->player_id), array('target' => '_blank'))
+			: $model->player_id) . "');";
 			$js .= "$('#bandetail-ip').html('" . (Webadmins::checkAccess('ip_view') ? $model->player_ip : 'Cкрыт') . "');";
 			$js .= "$('#bandetail-type').html('" . Prefs::getBanType($model->ban_type) . "');";
 			$js .= "$('#bandetail-reason').html('" . $model->ban_reason . "');";
