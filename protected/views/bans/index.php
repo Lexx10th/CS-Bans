@@ -46,7 +46,7 @@ $('.search-form form').submit(function(){
 
 <div class="alert alert-<?php echo $check ? 'error' : 'success' ?>">
 	<a href="#" class="close" data-dismiss="alert">&times;</a>
-	<?php 
+	<?php
 	$ip = $_SERVER['REMOTE_ADDR'];
 	echo $check
 			?
@@ -85,8 +85,10 @@ $this->widget('bootstrap.widgets.TbGridView', array(
     'columns'=>array(
 
 		array(
-			'header' => 'Дата',
-			'value'=>'date("d.m.Y", $data->ban_created)',
+			// 'header' => 'Дата',
+			// 'value'=>'date("d.m.Y", $data->ban_created)',
+			'header' => 'Когда',
+			'value'=>'date("d.m.Y", time()) == date("d.m.Y", $data->ban_created) ? date("H : i : s", $data->ban_created) : date("d.m.Y", $data->ban_created)',
 			'htmlOptions' => array('style' => 'width:70px'),
 		),
 		array(
