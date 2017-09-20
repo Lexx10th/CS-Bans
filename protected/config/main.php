@@ -69,9 +69,9 @@ return array(
 		'application.components.gameq.filters.*',
 		'ext.editable.*'
 	),
-	
+
 	'modules'=>array_replace($modules, array(
-		
+
 	)),
 
 	// Компоненты приложения
@@ -96,22 +96,22 @@ return array(
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'showScriptName'=>false,
-			'urlSuffix'=>'.html',
+			'urlSuffix'=>'',
 			'rules'=>array(
 				'/'=>'site/index',
-				
+
 				'billing/unban/<id:\d+>' => 'billing/default/unban',
 				'billing/<controller:\w+>/<action:\w+>/<id:\d+>' => 'billing/<controller>/<action>',
                 'billing/<controller:\w+>/<action:\w+>' => 'billing/<controller>/<action>',
 				'billing/<action:\w+>' => 'billing/default/<action>',
                 'billing/<controller:\w+>' => 'billing/<controller>/buy',
-				
+
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
 		),
-		
+
 		'format'=>array(
 			'booleanFormat'=>array('Нет', 'Да'),
 			'datetimeFormat'=>'d.m.Y H:i',
@@ -123,7 +123,8 @@ return array(
 			'emulatePrepare' => true,
 			'username' => $config->db_user,
 			'password' => $config->db_pass,
-			'charset' => 'utf8',
+			// 'charset' => 'utf8',
+			'charset' => 'latin1',
 			'tablePrefix'=>$config->db_prefix.'_',
 			'autoConnect' => FALSE,
 			'schemaCachingDuration' => 1000,
