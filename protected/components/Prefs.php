@@ -232,6 +232,8 @@ class Prefs extends CApplicationComponent {
 				return preg_match("/^[a-zA-Z0-9-_.]{2,}@[a-zA-Z0-9-_.]{2,}.[a-zA-Z]{2,6}$/",$value);
 			case 'steamid':
 				return preg_match("/^(STEAM|VALVE)_[0-9]:[0-9]:[0-9]{1,15}$/",$value);
+			case 'steamidreal':
+				return preg_match("/^(STEAM)_[0-9]:[0-9]:[0-9]{1,15}$/",$value);
 			case 'ip':
 				return preg_match("/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/",$value);
 			case 'amxxaccess':

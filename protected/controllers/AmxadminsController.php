@@ -199,7 +199,7 @@ class AmxadminsController extends Controller
 		$steam = '';
 
 		// Если стимайди админа проходит проверку на валидность, получаем инфу об админе с вальве
-		if(Prefs::validate_value($model->steamid))
+		if(Prefs::validate_value($model->steamid, 'steamidreal'))
 		{
 			if($url = @file_get_contents(Prefs::steam_convert($model->steamid, false, true)))
 			{
@@ -245,9 +245,18 @@ class AmxadminsController extends Controller
 		$info .= "<td><b>Ник</b></td>";
 		$info .= "<td>".CHtml::encode($model->nickname)."</td>";
 		$info .= "</tr><tr>";
-		$info .= "<td><b>Контакты</b></td>";
-		$info .= "<td>" . ($model->icq ? CHtml::image("//icq-rus.com/icq/3/".$model->icq.".gif"). " " . $model->icq : 'Не задан') . "</td>";
-		$info .= "</tr><tr>";
+		if ($model->icq)
+		{
+			$info .= "<td><b>Контакты</b></td>";
+			$info .= "<td>" . ($model->icq ? CHtml::image("//icq-rus.com/icq/3/".$model->icq.".gif"). " " . $model->icq : 'Не задан') . "</td>";
+			$info .= "</tr><tr>";
+		}
+		if (Prefs::validate_value($model->steamid, 'steamidreal'))
+		{
+			$info .= "<td><b>Steam ID</b></td>";
+			$info .= "<td>".$model->steamid."</td>";
+			$info .= "</tr><tr>";
+		}
 		$info .= "<td><b>Доступ</b></td>";
 		$info .= "<td>".$model->access."</td>";
 		$info .= "</tr><tr>";
@@ -259,7 +268,7 @@ class AmxadminsController extends Controller
 		$info .= "</tr>";
 		$info .= "</table>";
 		$js  = "$('#adminInfo').html('".$info."');";
-		$js .= "$('#adminSteam').html('".($steam ? $steam : '<i>Информация отсутствует</i>')."');";
+		$js .= "$('#adminSteam').html('".($steam ? $steam : '')."');";
 		$js .= "$('#adminServers').html('".($model->servers ? $servers : '<i>Информация отсутствует</i>')."');";
 		$js .= "$('#loading').hide();";
 		$js .= "$('#adminDetail').modal('show');";

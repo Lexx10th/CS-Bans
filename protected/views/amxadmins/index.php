@@ -64,6 +64,7 @@ $('.admintr').live('click', function(){
 				'style' => 'width: 100px;'
 			)
 		),
+
 		array(
 			'name' => 'access',
 			'value' => '$data->access',
@@ -98,18 +99,12 @@ $('.admintr').live('click', function(){
 )); ?>
 <div class="modal-header">
     <a class="close" data-dismiss="modal" rel="tooltip" data-placement="left" title="Закрыть">&times;</a>
-    <h4>Детали админа</h4>
+    <h4>Детали админа</h4><div id="adminSteam"></div>
 </div>
 <div class="modal-body" style="min-height: 450px">
-	<h3>Инфо</h3>
 	<div id="adminInfo"></div>
-	<hr>
-	<h3>STEAM</h3>
-	<div id="adminSteam"></div>
-	<hr>
 	<h3>Админка на серверах</h3>
 	<div id="adminServers"></div>
-	<hr>
 </div>
 <div class="modal-footer">
     <?php $this->widget('bootstrap.widgets.TbButton', array(
